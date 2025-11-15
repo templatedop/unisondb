@@ -1,0 +1,9 @@
+# Binaries
+writer-api/writer-api
+grpc-client1/grpc-client1
+grpc-client2/grpc-client2
+
+# Data directories
+/tmp/unisondb/
+/tmp/unisondb-client1/
+/tmp/unisondb-client2/
