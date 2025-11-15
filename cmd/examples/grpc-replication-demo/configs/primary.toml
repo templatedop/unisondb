@@ -1,0 +1,38 @@
+# UnisonDB Primary Server Configuration
+# This is the main database server that accepts writes and serves gRPC replication
+
+http_port = 8001
+grpc_port = 4001
+
+[storage_config]
+base_dir = "/tmp/unisondb/grpc-demo/primary"
+namespaces = ["demo"]
+bytes_per_sync = "1MB"
+segment_size = "16MB"
+
+# BTree backend - can be "boltdb" or "lmdb"
+[storage_config.btree]
+backend = "boltdb"
+
+[write_notify_config]
+enabled = true
+max_delay = "20ms"
+
+# WAL cleanup configuration
+[storage_config.wal_cleanup_config]
+interval = "5m"
+enabled = true
+max_age = "1h"
+min_segments = 5
+max_segments = 10
+
+# Logging configuration
+[log_config]
+log_level = "info"
+disable_timestamp = false
+
+[log_config.min_level_percents]
+debug = 100.0
+info  = 100.0
+warn  = 100.0
+error = 100.0
